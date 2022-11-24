@@ -15,7 +15,7 @@ const countryInfo = document.querySelector('.country-info');
 input.addEventListener('input', debounce(onSearchCountries, DEBOUNCE_DELAY));
 
 function onSearchCountries(e) {
-  value = e.target.value.trim();
+  const value = e.target.value.trim();
 
   countryInfo.innerHTML = '';
   countryList.innerHTML = '';
@@ -56,8 +56,8 @@ function onSearchCountries(e) {
       }
 
       countryList.innerHTML = data
-        .map(({ flags: { svg: flag }, name: { common: name } }) =>
-          createMarkupOfCountriesList(flag, name)
+        .map(({ flags: { svg: flag }, name: { common: countryName } }) =>
+          createMarkupOfCountriesList(flag, countryName)
         )
         .join('');
     })
